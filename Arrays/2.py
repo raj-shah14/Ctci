@@ -17,6 +17,9 @@ def checkPerm(string1,string2):
         if i in temp:
             temp[i] -= 1
 
-    print(temp)
+    for i in temp.values():
+        if i is not 0:
+            return False
+    return True
 
 print(checkPerm(string1,string2))
