@@ -36,4 +36,4 @@ def one_way(str1,str2):
         return True
     return False
 
-print(one_way(str1,str2))
+print(one_way(str1,str2))   #O(n) time complexity, O(1) space complexity.
