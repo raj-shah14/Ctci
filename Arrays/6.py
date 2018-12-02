@@ -29,4 +29,4 @@ def compress(str1):
         return str1
     return finstr
 
-print(compress(str1))
+print(compress(str1))  #O(n) time complexity 
