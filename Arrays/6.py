@@ -18,14 +18,14 @@ def compress(str1):
             count += 1
         else:
             finstr += prev
-            finstr += `count`
-            #finstr += str(count)      #Instead of using str, one should use backticks (``)
+            #finstr += `count`
+            finstr += str(count)      #Instead of using str, one should use backticks (``)
             count = 1
             prev = str1[i]
         i = i+1
     finstr += prev
-    finstr += `count`      #Converts int to string
-    #finstr += str(count)
+    #finstr += `count`      #Converts int to string
+    finstr += str(count)
 
     if len(str1) <= len(finstr):
         return str1
