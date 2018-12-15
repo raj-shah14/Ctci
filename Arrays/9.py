@@ -3,7 +3,7 @@
 
 
 s1 = "waterbottle"
-s2 = "erbottlewat"
+s2 = "erbottlewa"
 
 
 def rotate(s1):
@@ -16,7 +16,9 @@ def rotate(s1):
     return ''.join([i for i in s1])
 
 def isSubstring(s1,s2):
-    for i in range(len(s1)):
+    if len(s1) != len(s2):
+        return False
+    for _ in range(len(s1)):
         if (s1 == s2):
             return True
         s1 = rotate(s1)
