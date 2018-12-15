@@ -3,7 +3,7 @@
 
 
 s1 = "waterbottle"
-s2 = "erbottlewa"
+s2 = "erbottlewat"
 
 
 def rotate(s1):
