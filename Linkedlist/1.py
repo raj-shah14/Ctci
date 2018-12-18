@@ -29,5 +29,10 @@ def delDuplicates2(linkedlist):     #O(n) solution
 
 L1 = randomLinkedList(9, 3, 7)  #Length, min ,max
 print(L1)
-delDuplicates2(L1)
+delDuplicates(L1)
 print(L1)
+
+L2 = randomLinkedList(9, 3, 7)
+print(L2)
+delDuplicates2(L2)
+print(L2)

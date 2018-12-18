@@ -15,15 +15,28 @@ class Linkedlist:
         self.tail = None
 
     def addNode(self,value):
-        node = Node(value)
+        #New Node is head node
+        node = Node(value,self.head)
+        self.head = node
 
         #IF first node
-        if self.head == None:
-            self.head = node
-            self.tail = node
-        else:
-            self.tail.next = node
-            self.tail = node
+        # if self.head == None:
+        #     self.head = node
+        #     self.tail = node
+        # else:
+        #     self.tail.next = node
+        #     self.tail = node
+
+    def removeNode(self,node_value):
+        curr = self.head
+        if curr.value == node_value:
+            self.head = self.head.next
+        while curr.next is not None:
+            if curr.next.value == node_value:
+                curr.next = curr.next.next
+                break
+            else:
+                curr = curr.next
 
     def __str__(self):
         if self.head != None:
