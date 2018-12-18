@@ -2,7 +2,7 @@
 
 from Class_Linkedlist import randomLinkedList
 
-def delDuplicates(linkedlist):  #O(n^2) solution
+def delDuplicates(linkedlist):  #O(n^2) time, O(1) space solution
     curr = linkedlist.head
     while curr is not None:
         runn = curr
@@ -16,7 +16,7 @@ def delDuplicates(linkedlist):  #O(n^2) solution
 
 # Alternate solution
 
-def delDuplicates2(linkedlist):     #O(n) solution
+def delDuplicates2(linkedlist):     #O(n) time, O(n) space solution
     curval = linkedlist.head
     tempdict = {curval.value : True}
     while curval.next is not None:
