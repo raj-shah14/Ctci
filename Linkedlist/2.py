@@ -26,6 +26,37 @@ def getKthfromlast(linkedlist,index):
     return curr.value       #O(n) solution
 
 
+
+#Alternate Solution using Recursion
+def getKthWithRecursion(head,index):
+    if head is None:
+        return 0
+    elem = getKthWithRecursion(head.next,index) + 1
+    if elem == index:
+        print("Recursive Approach: "+ str(head.value))                  #O(n) space due to recursive calls
+    return elem
+
+
+# Alternate Iterative solution, more optimal
+def iterativeKthElement(linkedlist,index):
+    ptr1 = linkedlist.head
+    ptr2 = linkedlist.head
+    for _ in range(index):
+        if ptr1 is None:
+            return None
+        ptr1 = ptr1.next
+
+    while ptr1 is not None:
+        ptr1 = ptr1.next
+        ptr2 = ptr2.next
+    return ptr2.value           # O(n) time and O(1) space.
+
+    #Here i am not counting the length of my Linked list.
+
+
+
+
+
 # Deleting Kth from Last
 def deleteKthfromlast(linkedlist,index):
     lenll = getLength(linkedlist)
@@ -43,6 +74,8 @@ def deleteKthfromlast(linkedlist,index):
 
 L1 = randomLinkedList(9,2,9)
 print(L1)
-print(getKthfromlast(L1,6))
-deleteKthfromlast(L1,6)
-print(L1)
+print("My approach: " + str(getKthfromlast(L1,6)))
+print("Iterative 2 pointer appraoch: "+ str(iterativeKthElement(L1,6)))
+getKthWithRecursion(L1.head,6)
+# deleteKthfromlast(L1,6)
+# print(L1)
