@@ -25,7 +25,18 @@ class LinkedList:
         print(" ]",end="")
         print()
 
-def checkPalindrome(linkedlist):
+def revLinkedList(linkedlist):
+    rev = LinkedList()
+    length = 0
+    rhead = linkedlist.head
+    while rhead is not None:
+        rev.makeNode(rhead.data)
+        length += 1
+        rhead = rhead.next
+    return rev,length
+
+
+def checkPalindrome(linkedlist):            #Using bits
     head = linkedlist.head
     alpha = {'A':0,'B':1,'C':2,'D':3,'E':4,'F':5,'G':6,'H':7,'I':8,'J':9,'K':10,'L':11,'M':12,'N':13,'O':14,'P':15,'Q':16,'R':17,'S':18,'T':19,'U':20,'V':21,'W':22,'X':23,'Y':24,'Z':25}
     bits = [0 for _ in range(26)]
@@ -40,15 +51,35 @@ def checkPalindrome(linkedlist):
         return True
     return False
 
+
+def checkPalCompare(l1,l2,size):        #Using size, linkedlist and reverse of linkedlist upto center value
+    first = l1.head
+    sec = l2.head
+    for _ in range(0,int(size/2)):
+        while first is not None and sec is not None:
+            if first.data != sec.data:
+                return False
+            first = first.next
+            sec = sec.next
+    return True
+
+
 l1 = LinkedList()
 
 l1.makeNode('A')
 l1.makeNode('B')
 l1.makeNode('C')
 l1.makeNode('D')
+#l1.makeNode('D')
 l1.makeNode('C')
 l1.makeNode('B')
 l1.makeNode('A')
 
+l2,lllength = revLinkedList(l1)
+print("First List")
 l1.printlist()
-print(checkPalindrome(l1))
+
+print("Reverse List")
+l2.printlist()
+print("Is the list Palindrome? Result: {}".format(checkPalindrome(l1)))
+print("Result via Compare: {}".format(checkPalCompare(l1,l2,lllength)))         # O(n/2) complexity for time
