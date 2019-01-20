@@ -64,13 +64,35 @@ def checkPalCompare(l1,l2,size):        #Using size, linkedlist and reverse of l
     return True
 
 
+def is_palindrome(linkedlist):
+    fast = slow = linkedlist.head
+    stack = []
+
+    while fast and fast.next:
+        stack.append(slow.data)
+        slow = slow.next
+        fast = fast.next.next
+
+    if fast:
+        slow = slow.next
+
+    while slow:
+        top = stack.pop()
+        if top != slow.data:
+            return False
+
+        slow = slow.next 
+    return True
+
+
+
 l1 = LinkedList()
 
 l1.makeNode('A')
 l1.makeNode('B')
 l1.makeNode('C')
 l1.makeNode('D')
-#l1.makeNode('D')
+l1.makeNode('D')
 l1.makeNode('C')
 l1.makeNode('B')
 l1.makeNode('A')
@@ -83,3 +105,5 @@ print("Reverse List")
 l2.printlist()
 print("Is the list Palindrome? Result: {}".format(checkPalindrome(l1)))
 print("Result via Compare: {}".format(checkPalCompare(l1,l2,lllength)))         # O(n/2) complexity for time
+
+print("Result via Stack: {}".format(is_palindrome(l1)))
