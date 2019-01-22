@@ -73,7 +73,7 @@ def is_palindrome(linkedlist):
         slow = slow.next
         fast = fast.next.next
 
-    if fast:
+    if fast:                    # Incase of the list is odd, move to next value after reaching middle
         slow = slow.next
 
     while slow:
