@@ -8,32 +8,36 @@ class Node:
         self.data = data
         self.next = None
 
-def intersect(n1,n2):
-    curA, curB = n1, n2
-    begin, tailA, tailB = None, None, None
-    while curA and curB:
-        
-        if curA == curB:
-            begin = curA
-            break
+def getlengthandtail(node):
+    count = 0
+    while node.next is not None:
+        count += 1
+        node = node.next
+    return count,node
 
-        if curA.next:
-            curA = curA.next
-        elif tailA is None:
-            tailA = curA
-            curA = n2
-        else:
-            break
+def intersect(n1,n2):               # O(A+B) time and O(1) space, where A,B are length of linked list
+    if n1 is None or n2 is None:
+        return None
 
-        if curB.next:
-            curB = curB.next
-        elif tailB is None:
-            tailB = curB
-            curB = n1
-        else:
-            break
+    lenA,tailNodeA = getlengthandtail(n1)
+    lenB,tailNodeB = getlengthandtail(n2)
 
-    return begin
+    if tailNodeA != tailNodeB:
+        return None
+
+    shorter = n1 if lenA < lenB else n2
+    longer = n2 if lenA < lenB else n1
+
+    diff = abs(lenA - lenB)
+
+    for _ in range(diff):
+        longer = longer.next
+
+    while shorter is not longer:
+        shorter = shorter.next
+        longer = longer.next
+
+    return longer
 
 def result(res):
     if res is None:
