@@ -8,87 +8,56 @@ class Node:
         self.data = data
         self.next = None
 
-class LinkedList:
-    def __init__(self):
-        self.head = None
+def intersect(n1,n2):
+    curA, curB = n1, n2
+    begin, tailA, tailB = None, None, None
+    while curA and curB:
+        
+        if curA == curB:
+            begin = curA
+            break
 
-    def makeNode(self,data):
-        newNode = Node(data)
-        newNode.next = self.head
-        self.head = newNode
+        if curA.next:
+            curA = curA.next
+        elif tailA is None:
+            tailA = curA
+            curA = n2
+        else:
+            break
 
-    def printlist(self):
-        tmp = self.head
-        print("AddedLinkedList [ ",end="")
-        while tmp is not None:
-            print(str(tmp.data),end="")
-            if tmp.next is not None:
-                print("->",end="")
-            tmp = tmp.next
-        print(" ]",end="")
-        print()
+        if curB.next:
+            curB = curB.next
+        elif tailB is None:
+            tailB = curB
+            curB = n1
+        else:
+            break
 
-def length(linkedlist):
-    count = 0
-    ll = linkedlist.head
-    while ll is not None:
-        count += 1
-        ll = ll.next
-    return count
-
-def revLinkedList(linkedlist):
-    rev = LinkedList()
-    rhead = linkedlist.head
-    while rhead is not None:
-        rev.makeNode(rhead.data)
-        rhead = rhead.next
-    return rev
+    return begin
 
 
-def intersection(l1,l2):
+a = Node(14)
+b = Node(26)
+c = Node(32)
+d = Node(23)
+e = Node(54)
+f = Node(77)
 
-    shorter = l2 if length(l1) > length(l2) else l1
-    longer = l1 if length(l1) > length(l2) else l2
+g = Node(44)
+h = Node(89)
+i = Node(52)
+k = Node(22)
 
-    diff = length(longer) - length(shorter)
-    
-    shorter_node, longer_node = shorter.head, longer.head
-    
-    for i in range(diff):
-        longer_node = longer_node.next
+a.next = b
+b.next = c
+c.next = d
+d.next = e
+e.next = f
 
-    while shorter_node is not longer_node:
-        shorter_node = shorter_node.next
-        longer_node = longer_node.next
+g.next = h
+h.next = c
+d.next = i
+i.next = k
 
-    return longer_node
-
-
-l1 = LinkedList()
-l2 = LinkedList()
-
-l1.makeNode(5)
-l1.makeNode(84)
-l1.makeNode(35)
-l1.makeNode(14)
-l1.makeNode(26)
-l1.makeNode(21)
-l1.makeNode(11)
-l1.makeNode(7)
-l1.makeNode(88)
-
-l1 = revLinkedList(l1)
-l1.printlist()
-
-l2.makeNode(33)
-l2.makeNode(99)
-l2.makeNode(37)
-l2.head.next.next.next = Node(l1.head.next.next.data)
-l2.makeNode(55)
-l2.makeNode(74)
-l2.makeNode(28)
-
-l2 = revLinkedList(l2)
-l2.printlist()
-
-print(intersection(l1,l2))
+res = intersect(a,g)
+print("The intersecting node is {} and value is {}".format(res,res.data))
