@@ -35,7 +35,13 @@ def intersect(n1,n2):
 
     return begin
 
+def result(res):
+    if res is None:
+        print("Linkedlist don't intersect")
+    else:  
+        print("The intersecting node is {} and value is {}".format(res,res.data))
 
+# Intersecting Example
 a = Node(14)
 b = Node(26)
 c = Node(32)
@@ -48,6 +54,7 @@ g = Node(44)
 h = Node(89)
 i = Node(52)
 k = Node(22)
+m = Node(80)
 
 a.next = b
 b.next = c
@@ -61,6 +68,18 @@ q.next = g
 g.next = h
 h.next = f
 
+print("Case 1:")
+result(intersect(a,q))
 
-res = intersect(a,q)
-print("The intersecting node is {} and value is {}".format(res,res.data))
+#Non intersecting Example
+a.next = b
+b.next = c
+c.next = d
+d.next = e
+
+q.next = g
+g.next = h
+h.next = m
+
+print("Case 2:")
+result(intersect(a,q))
