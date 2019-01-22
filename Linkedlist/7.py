@@ -43,6 +43,7 @@ d = Node(23)
 e = Node(54)
 f = Node(77)
 
+q = Node(12)
 g = Node(44)
 h = Node(89)
 i = Node(52)
@@ -53,11 +54,13 @@ b.next = c
 c.next = d
 d.next = e
 e.next = f
-
-g.next = h
-h.next = c
-d.next = i
+f.next = i
 i.next = k
 
-res = intersect(a,g)
+q.next = g
+g.next = h
+h.next = f
+
+
+res = intersect(a,q)
 print("The intersecting node is {} and value is {}".format(res,res.data))
