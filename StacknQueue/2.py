@@ -37,5 +37,7 @@ m.pop()
 
 m.pop()
 m.getMin()
+m.showStack()
+
 m.pop()
 m.showStack()
