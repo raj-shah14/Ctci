@@ -4,26 +4,33 @@
 class minStack:
     def __init__(self):
         self.arr = []
+        self.MIN = 9999
+
+    def setMin(self):
+        for i in self.arr:
+            if i < self.MIN:
+                self.MIN = i
         
+
+    def getMin(self):
+        return self.MIN
 
     def push(self,value):
         self.value = value
         self.arr = [self.value] + self.arr
-
-    def getMin(self):
-        self.MIN = 9999
-        for i in self.arr:
-            if i < self.MIN:
-                self.MIN = i
-        print(self.MIN)
+        if self.value < self.MIN:
+            self.setMin()
 
     def pop(self):
         val = self.arr[0]
-        print(val)
         del self.arr[0]
+        if val == self.MIN:
+            self.MIN = self.arr[0]
+            self.setMin()
+        return val
 
     def showStack(self):
-        print(self.arr)
+        return self.arr
 
 m = minStack()
 m.push(5)
@@ -31,13 +38,23 @@ m.push(14)
 m.push(95)
 m.push(1)
 
-m.getMin()
-m.showStack()
-m.pop()
+print("The stack is: {}".format(m.showStack()))
+print("The min in Stack is: {}".format(m.getMin()))
 
-m.pop()
-m.getMin()
-m.showStack()
+print("Popping the top of Stack: {}".format(m.pop()))
 
-m.pop()
-m.showStack()
+print("The Stack now: {}".format(m.showStack()))
+print("The min in Stack is: {}".format(m.getMin()))
+
+m.push(2)
+print("The stack is: {}".format(m.showStack()))
+print("The min in Stack is: {}".format(m.getMin()))
+
+m.push(1)
+m.push(100)
+m.push(85)
+
+print("Popping the top of Stack: {}".format(m.pop()))
+
+print("The stack is: {}".format(m.showStack()))
+print("The min in Stack is: {}".format(m.getMin()))
