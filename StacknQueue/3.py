@@ -11,14 +11,17 @@ class Stack:
     def __init__(self,thresh):
         self.thresh = thresh
         self.arr = []
+    
+    def isFull(self):
+        return len(self.arr) == self.thresh
 
     def push(self,value):
         self.value = value
-        self.arr.insert(0,self.value)
-    
-
-    def isFull(self):
-        return len(self.arr) == self.thresh
+        if self.isFull:
+            pass
+            #TODO make new stack and add to that
+        else:
+            self.arr.insert(0,self.value)
 
 
     def pop(self):
