@@ -53,25 +53,48 @@ class Linkedlist:
         print()
 
 
+def enqueue(shelter):
+    enqc = Linkedlist()
+    enqd = Linkedlist()
+    for i in shelter:
+        if i.startswith("C"):
+            enqc.makeNode(i)
+        if i.startswith("D"):
+            enqd.makeNode(i)
+    return enqc,enqd
 
 
-enqueue = Linkedlist()
+def dequeueAny(linkedlistc,linkedlistd):
+    dqac = linkedlistc
+    dqad = linkedlistd
+    ra = random.randint(1,2)
+    if ra == 1:
+        order = dqac.removeNode()
+    else:
+        order = dqad.removeNode()
+    return order
 
 
-enqueue.makeNode("Dog1")
-enqueue.makeNode("Cat1")
-enqueue.makeNode("Dog2")
-enqueue.makeNode("Dog3")
-enqueue.makeNode("Cat2")
-enqueue.makeNode("Dog4")
-enqueue.makeNode("Dog5")
-enqueue.makeNode("Cat3")
-enqueue.makeNode("Cat4")
-enqueue.makeNode("Cat5")
-enqueue.makeNode("Dog6")
-enqueue.makeNode("Dog7")
-enqueue.makeNode("Dog8")
-enqueue.makeNode("Cat6")
+def dequeueCat(linkedlist):
+    dqc = linkedlist
+    first = dqc.removeNode()
+    return first
 
+def dequeueDog(linkedlist):
+    dqd = linkedlist
+    dog = dqd.removeNode()
+    return dog
+    
 
-enqueue.printlist()
+shelter = ["Dog1", "Cat1","Dog2","Dog3","Cat2","Dog4","Dog5","Cat3","Cat4","Cat5","Dog6","Dog7","Dog8","Cat6" ]
+
+enqc,enqd = enqueue(shelter)
+enqc.printlist()
+enqd.printlist()
+
+print(dequeueAny(enqc,enqd))
+print(dequeueDog(enqd))
+print(dequeueCat(enqc))
+
+enqc.printlist()
+enqd.printlist()
