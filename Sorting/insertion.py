@@ -13,3 +13,20 @@ for i in range(1,len(arr)):
     arr[hole] = val
 
 print(arr)
+
+# Insertion sort
+
+def insertionSort(arr):
+  for i in range(1,len(arr)):
+    hole = i
+    val = arr[hole]
+
+    while hole>0 and arr[hole-1]>val:
+      arr[hole-1]=arr[hole]
+      hole = hole-1
+
+    arr[hole] = val
+  
+  print(arr)
+
+insertionSort(arr)
