@@ -15,3 +15,30 @@ for i in range(0,len(arr)):
 
 print(arr)        
         
+
+#Selection Sort
+
+def swap(arr,val1,val2):
+  temp = arr[val1]
+  arr[val1] = arr[val2]
+  arr[val2] = temp
+  return arr
+
+def indexofMin(arr,start):
+  minval = arr[start]
+  idx = start
+
+  for i in range(idx+1,len(arr)):
+    if arr[i] < minval:
+      minval = arr[i]
+      idx = i
+  return idx
+
+def selectionSort(arr):
+  for i in range(len(arr)):
+    rs = indexofMin(arr,i)
+    swap(arr,rs,i)
+  
+  return arr
+
+print(selectionSort(arr))
