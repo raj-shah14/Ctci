@@ -15,7 +15,7 @@ def tripleStep(n):
     return tripleStep(n-1) + tripleStep(n-2) + tripleStep(n-3)
 print(tripleStep(5))
 
-# Memoized
+# Memoized -- > Bottom up Approach
 def tripleStep_memo(n):
     if n <= 3:
         return n
@@ -28,3 +28,13 @@ def tripleStep_memo(n):
         temp[i] = temp[i-1]+temp[i-2]+temp[i-3]
     return temp[n]
 print(tripleStep_memo(5))
+
+# Top Down Approach with memo
+memo = {0:0,1:1,2:2,3:4}
+def tripleStep_td(n,memo):
+    if n in memo:
+        return memo[n]
+    else:
+        memo[n] = tripleStep_td(n-1,memo) + tripleStep_td(n-2,memo) + tripleStep_td(n-3,memo)
+        return memo[n]
+print(tripleStep_td(5,memo))
